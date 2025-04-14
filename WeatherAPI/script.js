@@ -16,18 +16,18 @@ const cities = [
     { name: 'Turkey', lat: 38.9637, lon: 35.2433 }
 ];
 
-const citySelect = document.getElementById('cities');
-const weatherInfo = document.getElementById('weather-info');
+const citiess = document.getElementById('cities');
+const weather = document.getElementById('weather');
 
 cities.forEach(city => {
     const option = document.createElement('option');
     option.value = JSON.stringify(city);
     option.text = city.name;
-    citySelect.appendChild(option);
+    citiess.appendChild(option);
 });
 
-function getWeather() {
-    const selected = citySelect.value;
+function display() {
+    const selected = citiess.value;
 
 
     const { lat, lon, name } = JSON.parse(selected);
@@ -35,20 +35,13 @@ function getWeather() {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
         .then(res => res.json())
         .then(data => {
-            const { temp, humidity } = data.main;
-            const wind = data.wind.speed;
-            const desc = data.weather[0].description;
-            const icon = data.weather[0].icon;
-
-            weatherInfo.innerHTML = `
-    <h5>${name}</h5>
-    <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${desc}">
-    <p><strong>${desc}</strong></p>
-    <p>Temperature: ${temp} °C</p>
-    <p>Humidity: ${humidity}%</p>
-    <p>Wind: ${wind} m/s</p>
-  `;
-        })
+            const {temp} = data.main;
+            weather.innerHTML =
+             `
+            <h5>${name}</h5>
+            <p>Temperature: ${temp} °C</p>
+            `;
+                })
         .catch(err => {
             console.error(err);
         });

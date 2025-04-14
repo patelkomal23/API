@@ -13,13 +13,15 @@
 </head>
 
 <body>
-
+    <!-- <h5>${name}</h5>
+    <p>Temperature: ${temp} °C</p>
+     -->
     <div class="container text-center">
-        <h2>🌤️ Simple Weather Info</h2>
+        <h2> Simple Weather Info</h2>
 
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <select id="cities" class="form-select" onchange="getWeather()">
+                <select id="cities" class="form-select" onchange="display()">
                     <option value="">-- Select a city --</option>
                 </select>
             </div>
@@ -27,7 +29,7 @@
 
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div id="weather-info">
+                <div id="weather">
                     <p>Select a city to see the weather</p>
                 </div>
             </div>
