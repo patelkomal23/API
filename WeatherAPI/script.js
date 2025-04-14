@@ -38,7 +38,7 @@ function display() {
             const {temp} = data.main;
             weather.innerHTML =
              `
-            <h5>${name}</h5>
+            <h5 style="font-weight: 700;">${name}</h5>
             <p>Temperature: ${temp} °C</p>
             `;
                 })
